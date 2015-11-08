@@ -27,7 +27,7 @@ DefinitionBlock ("SSDT5.aml", "SSDT", 1, "LENOVO", "CB-01   ", 0x00000001)
      */
 
     External (_SB_.OSCO, IntObj)
-    External (_SB_.PCI0.GFX0, DeviceObj)
+    External (_SB_.PCI0.IGPU, DeviceObj)
     External (_SB_.PCI0.LPCB.EC0_.GATY, FieldUnitObj)
     External (_SB_.PCI0.LPCB.EC0_.LSTE, FieldUnitObj)
     External (_SB_.PCI0.RP05, DeviceObj)
@@ -501,7 +501,7 @@ DefinitionBlock ("SSDT5.aml", "SSDT", 1, "LENOVO", "CB-01   ", 0x00000001)
         }
     }
 
-    Scope (\_SB.PCI0.GFX0)
+    Scope (\_SB.PCI0.IGPU)
     {
         Method (ATPX, 2, Serialized)
         {
@@ -853,7 +853,7 @@ DefinitionBlock ("SSDT5.aml", "SSDT", 1, "LENOVO", "CB-01   ", 0x00000001)
         }
     }
 
-    Scope (\_SB.PCI0.GFX0)
+    Scope (\_SB.PCI0.IGPU)
     {
         Name (\_SB.PCI0.RP05.PXSX.NTLE, 0x0F)
         Name (\_SB.PCI0.RP05.PXSX.TLE1, 0x02)
