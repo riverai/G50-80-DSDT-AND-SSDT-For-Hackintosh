@@ -8053,7 +8053,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 Offset (0x12), 
                 FUSL,   8, 
                 FUSH,   8, 
-                FWBT,   64, 
+                WBTX,64,//FWBT,64, 
                 Offset (0x5D), 
                 EXSI,   8, 
                 EXSB,   8, 
@@ -8062,7 +8062,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 SMST,   8, 
                 SMAD,   8, 
                 SMCM,   8, 
-                SMDA,   256, 
+                MDAX,256,//SMDA,256, 
                 BCNT,   8, 
                 SMAA,   8, 
                 SAD0,   8, 
@@ -8189,16 +8189,16 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 B1MF,   3, 
                 Offset (0xC1), 
                 B1ST,   8, 
-                B1RC,   16, 
+                CA00,8,CA01,8, 
                 B1SN,   16, 
-                B1FV,   16, 
-                B1DV,   16, 
-                B1DC,   16, 
-                B1FC,   16, 
+                CB00,8,CB01,8, 
+                CE00,8,CE01,8, 
+                CD00,8,CD01,8, 
+                CF00,8,CF01,8, 
                 B1GS,   8, 
                 B1CT,   8, 
                 B1CR,   16, 
-                B1AC,   16, 
+                CG00,8,CG01,8, 
                 B1PC,   8, 
                 B1VL,   8, 
                 B1TM,   8, 
@@ -8327,13 +8327,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 {
                     If (LEqual (ECON, One))
                     {
-                        Store (B1DC, Local0)
+                        Store (B1B2(CD00,CD01), Local0)
                         Multiply (Local0, 0x0A, Local0)
                         Store (Local0, Index (PBIF, One))
-                        Store (B1FC, Local0)
+                        Store (B1B2(CF00,CF01), Local0)
                         Multiply (Local0, 0x0A, Local0)
                         Store (Local0, Index (PBIF, 0x02))
-                        Store (B1DV, Index (PBIF, 0x04))
+                        Store (B1B2(CE00,CE01), Index (PBIF, 0x04))
                         Store ("", Index (PBIF, 0x09))
                         Store ("", Index (PBIF, 0x0B))
                     }
@@ -8387,7 +8387,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                         }
 
                         Sleep (0x10)
-                        Store (B1AC, OBAC)
+                        Store (B1B2(CG00,CG01), OBAC)
                         If (And (OBST, One))
                         {
                             If (LNotEqual (OBAC, Zero))
@@ -8398,9 +8398,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
                         Store (OBAC, OBPR)
                         Sleep (0x10)
-                        Store (B1RC, OBRC)
+                        Store (B1B2(CA00,CA01), OBRC)
                         Sleep (0x10)
-                        Store (B1FV, OBPV)
+                        Store (B1B2(CB00,CB01), OBPV)
                         Multiply (OBRC, 0x0A, OBRC)
                         Store (Divide (Multiply (OBAC, OBPV), 0x03E8, ), OBPR)
                         Store (OBST, Index (PBST, Zero))
@@ -8674,7 +8674,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                                 Store (FB0, Local0)
                                 If (LEqual (And (Local0, One), Zero))
                                 {
-                                    Store (FB4, SMDA)
+                                    WECB(0x64,256,FB4)
                                 }
 
                                 Store (Zero, SMST)
@@ -8693,7 +8693,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                                 Store (FB0, Local0)
                                 If (LNotEqual (And (Local0, One), Zero))
                                 {
-                                    Store (SMDA, FB4)
+                                    Store (RECB(0x64,256), FB4)
                                 }
 
                                 Store (SMST, FB1)
@@ -8715,7 +8715,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                         {
                             Name (RETB, Buffer (0x0A) {})
                             Name (BUF1, Buffer (0x08) {})
-                            Store (FWBT, BUF1)
+                            Store (RECB(0x14,64), BUF1)
                             CreateByteField (BUF1, Zero, FW0)
                             CreateByteField (BUF1, One, FW1)
                             CreateByteField (BUF1, 0x02, FW2)
@@ -8773,7 +8773,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                         Store (B1CT, Index (DerefOf (Index (GBUF, Zero)), Zero))
                         Store (Zero, Index (DerefOf (Index (GBUF, One)), Zero))
                         Name (BUF1, Buffer (0x08) {})
-                        Store (FWBT, BUF1)
+                        Store (RECB(0x14,64), BUF1)
                         CreateByteField (BUF1, Zero, FW0)
                         CreateByteField (BUF1, One, FW1)
                         CreateByteField (BUF1, 0x02, FW2)
@@ -8856,26 +8856,26 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     {
                         If (LEqual (Arg0, Zero))
                         {
-                            If (LEqual (B1FV, Zero))
+                            If (LEqual (B1B2(CB00,CB01), Zero))
                             {
                                 Return (Zero)
                             }
 
-                            If (LEqual (B1AC, Zero))
+                            If (LEqual (B1B2(CG00,CG01), Zero))
                             {
                                 Return (Zero)
                             }
 
-                            Store (B1FC, Local0)
+                            Store (B1B2(CF00,CF01), Local0)
                             Multiply (Local0, 0x0A, Local0)
                             Store (Local0, VBFC)
-                            Store (B1RC, Local1)
+                            Store (B1B2(CA00,CA01), Local1)
                             Multiply (Local1, 0x0A, Local1)
                             Store (Local1, VBRC)
                             If (LGreater (VBFC, VBRC))
                             {
-                                Store (B1FV, VBPV)
-                                Store (B1AC, VBAC)
+                                Store (B1B2(CB00,CB01), VBPV)
+                                Store (B1B2(CG00,CG01), VBAC)
                                 Subtract (Local0, Local1, Local0)
                                 Store (Multiply (VBAC, VBPV), Local1)
                                 Store (Multiply (Local0, 0x03E8), Local3)
@@ -9268,6 +9268,51 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             {
                 Store (0x50, P80H)
                 Store (0x38, SMIC)
+            }
+            Method (RE1B, 1, NotSerialized)
+            {
+                OperationRegion(ERAM, EmbeddedControl, Arg0, 1)
+                Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }
+                Return(BYTE)
+            }
+            Method (RECB, 2, Serialized)
+            // Arg0 - offset in bytes from zero-based EC
+            // Arg1 - size of buffer in bits
+            {
+                ShiftRight(Arg1, 3, Arg1)
+                Name(TEMP, Buffer(Arg1) { })
+                Add(Arg0, Arg1, Arg1)
+                Store(0, Local0)
+                While (LLess(Arg0, Arg1))
+                {
+                    Store(RE1B(Arg0), Index(TEMP, Local0))
+                    Increment(Arg0)
+                    Increment(Local0)
+                }
+                Return(TEMP)
+            }
+            Method (WE1B, 2, NotSerialized)
+            {
+                OperationRegion(ERAM, EmbeddedControl, Arg0, 1)
+                Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }
+                Store(Arg1, BYTE)
+            }
+            Method (WECB, 3, Serialized)
+            // Arg0 - offset in bytes from zero-based EC
+            // Arg1 - size of buffer in bits
+            // Arg2 - value to write
+            {
+                ShiftRight(Arg1, 3, Arg1)
+                Name(TEMP, Buffer(Arg1) { })
+                Store(Arg2, TEMP)
+                Add(Arg0, Arg1, Arg1)
+                Store(0, Local0)
+                While (LLess(Arg0, Arg1))
+                {
+                    WE1B(Arg0, DerefOf(Index(TEMP, Local0)))
+                    Increment(Arg0)
+                    Increment(Local0)
+                }
             }
         }
 
@@ -18404,5 +18449,6 @@ P8XH (One, 0xAB)
     Method (WAK, 1, NotSerialized)
     {
     }
+    Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }
 }
 
