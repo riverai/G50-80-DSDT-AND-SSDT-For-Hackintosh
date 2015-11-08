@@ -52,8 +52,8 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
     External (_SB_.PCI0.AR0A, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.AR0B, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.B0D3, DeviceObj)
-    External (_SB_.PCI0.GFX0, DeviceObj)
-    External (_SB_.PCI0.GFX0.SNXD, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.IGPU, DeviceObj)
+    External (_SB_.PCI0.IGPU.SNXD, MethodObj)    // 1 Arguments
     External (_SB_.PCI0.PEG0, DeviceObj)
     External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
     External (_SB_.PCI0.PEG1, DeviceObj)
@@ -1022,7 +1022,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
         }
     }
 
-    Scope (\_SB.PCI0.GFX0)
+    Scope (\_SB.PCI0.IGPU)
     {
         Method (_DOS, 1, NotSerialized)  // _DOS: Disable Output Switching
         {
@@ -2420,7 +2420,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             {
                 If (LAnd (LGreaterEqual (Arg0, Zero), LLessEqual (Arg0, 0x64)))
                 {
-                    \_SB.PCI0.GFX0.AINT (One, Arg0)
+                    \_SB.PCI0.IGPU.AINT (One, Arg0)
                     Store (Arg0, BRTL)
                 }
             }
@@ -3166,7 +3166,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             Store (0x03, CSTS)
             If (LAnd (LEqual (CHPD, Zero), LEqual (Arg1, Zero)))
             {
-                Notify (\_SB.PCI0.GFX0, Arg1)
+                Notify (\_SB.PCI0.IGPU, Arg1)
             }
 
             If (CondRefOf (HNOT))
@@ -3175,7 +3175,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             }
             Else
             {
-                Notify (\_SB.PCI0.GFX0, 0x80)
+                Notify (\_SB.PCI0.IGPU, 0x80)
             }
 
             Return (Zero)
