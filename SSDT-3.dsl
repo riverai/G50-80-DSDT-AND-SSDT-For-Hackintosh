@@ -51,7 +51,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
     External (_SB_.PCI0.AR02, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.AR0A, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.AR0B, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.B0D3, DeviceObj)
+    External (_SB_.PCI0.HDAU, DeviceObj)
     External (_SB_.PCI0.IGPU, DeviceObj)
     External (_SB_.PCI0.IGPU.SNXD, MethodObj)    // 1 Arguments
     External (_SB_.PCI0.PEG0, DeviceObj)
@@ -701,7 +701,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
         }
     }
 
-    Scope (\_SB.PCI0.B0D3)
+    Scope (\_SB.PCI0.HDAU)
     {
         Name (BARA, 0x80000000)
         Name (BBAR, Zero)
@@ -3091,12 +3091,12 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     If (LEqual (PARM, One))
                     {
                         Or (\_SB.PCI0.AUDE, 0x20, \_SB.PCI0.AUDE)
-                        \_SB.PCI0.B0D3.ABWA (One)
-                        \_SB.PCI0.B0D3.ARST ()
-                        \_SB.PCI0.B0D3.ASTR ()
-                        \_SB.PCI0.B0D3.AINI ()
-                        \_SB.PCI0.B0D3.CXDC ()
-                        \_SB.PCI0.B0D3.ABWA (Zero)
+                        \_SB.PCI0.HDAU.ABWA (One)
+                        \_SB.PCI0.HDAU.ARST ()
+                        \_SB.PCI0.HDAU.ASTR ()
+                        \_SB.PCI0.HDAU.AINI ()
+                        \_SB.PCI0.HDAU.CXDC ()
+                        \_SB.PCI0.HDAU.ABWA (Zero)
                         Notify (\_SB.PCI0, Zero)
                     }
 
@@ -3114,7 +3114,7 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 If (LEqual (GESF, 0x16))
                 {
                     And (PARM, 0x03, Local0)
-                    \_SB.PCI0.B0D3.DCCC (Local0)
+                    \_SB.PCI0.HDAU.DCCC (Local0)
                     Store (Zero, GESF)
                     Return (SUCC)
                 }
