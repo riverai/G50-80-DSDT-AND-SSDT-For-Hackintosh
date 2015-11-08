@@ -46,7 +46,6 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
      * External declarations that were imported from
      * the reference file [refs.txt]
      */
-    External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj)    // 2 Arguments
 
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.AR02, MethodObj)    // 0 Arguments
@@ -72,6 +71,8 @@ DefinitionBlock ("SSDT3.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
     External (PNHM, FieldUnitObj)
     External (S0ID, FieldUnitObj)
     External (SCIS, FieldUnitObj)
+    External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj)    // 2 Arguments
+  
 
     OperationRegion (SANV, SystemMemory, 0x9CF77E18, 0x0156)
     Field (SANV, AnyAcc, Lock, Preserve)
