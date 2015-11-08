@@ -293,6 +293,7 @@ DefinitionBlock ("SSDT5.aml", "SSDT", 1, "LENOVO", "CB-01   ", 0x00000001)
         Method (_INI, 0, NotSerialized)  // _INI: Initialize
         {
             Store (Zero, \_SB.PCI0.RP05.PXSX._ADR)
+            _OFF()
         }
 
         Method (HGON, 0, Serialized)
