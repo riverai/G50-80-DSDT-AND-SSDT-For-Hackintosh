@@ -11,8 +11,7 @@ GPPR方法引用了SGOP，编译器错误的猜了一个参数。
 用"grep SGOP *.dsl"可以发现它存在于另外一个SSDT表中，而且是两个参数，所以直接指定一个正确配置参数的refs.txt，就可以正确反编译GPPR方法。该文件和使用示例你可以在该项目文件夹中找到。
 
 
-**External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj, 2)
-**
+**External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj, 2)**
 
 重新反编译
 iasl -da -dl -fe refs.txt
@@ -22,8 +21,7 @@ iasl -da -dl -fe refs.txt
 
 
 
-**另外一种方法是直接删除这个方法
-**
+**另外一种方法是直接删除这个方法**
 
 
 into method label GPPR replace_content begin //nothing end;
@@ -76,8 +74,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 ##USB  0X6D 
 
-究竟是6D还是0D，你自己看看就知道。搜索**_PRW **
-
+究竟是6D还是0D，你自己看看就知道。搜索 **_PRW ** 。
 ##显卡相关的安装引导问题
 
 这个机器比较诡异：
@@ -105,8 +102,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 ##启动与启动参数
 
 
-**务必确保你使用的是最新版的Clover和它的自带驱动。
-**
+**务必确保你使用的是最新版的Clover和它的自带驱动。**
 
 
 可能你需要启动参数dart = 0，加上不会有什么坏处，我在测试时候发现几个问题，也许与此参数有关，没有进一步排除，有待测试。
