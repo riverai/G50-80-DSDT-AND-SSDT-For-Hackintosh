@@ -124,6 +124,11 @@ USB应该设置到SmartAuto（如果有的话）
 这之后再用**UBuntu提取**，不要使用Clover，也不要使用Windows。
 
 
+##SSDT关闭独显
+
+在SSDT5，直接在_INI 调用_OFF 。
+
+
 
 ##SMBIOS
  
