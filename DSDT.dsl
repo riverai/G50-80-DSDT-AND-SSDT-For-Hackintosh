@@ -68,13 +68,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
     External (_SB_.PCI0.B0D3.ABAR, FieldUnitObj)
     External (_SB_.PCI0.B0D3.BARA, IntObj)
     External (_SB_.PCI0.EPON, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.CBLV, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.CLID, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.DD1F, UnknownObj)
-    External (_SB_.PCI0.GFX0.GLID, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.GSCI, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.GSSE, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.IUEH, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.IGPU.CBLV, FieldUnitObj)
+    External (_SB_.PCI0.IGPU.CLID, FieldUnitObj)
+    External (_SB_.PCI0.IGPU.DD1F, UnknownObj)
+    External (_SB_.PCI0.IGPU.GLID, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.IGPU.GSCI, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.IGPU.GSSE, FieldUnitObj)
+    External (_SB_.PCI0.IGPU.IUEH, MethodObj)    // 1 Arguments
     External (_SB_.PCI0.PEG0.HPME, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.PEG1.HPME, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.PEG2.HPME, MethodObj)    // 0 Arguments
@@ -2673,7 +2673,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     Name (_ADR, 0x00030000)  // _ADR: Address
                 }
 
-                Device (GFX0)
+                Device (IGPU)
                 {
                     Name (_ADR, 0x00020000)  // _ADR: Address
                 }
@@ -8903,7 +8903,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 Store (0x43, P80H)
                 Store (Zero, Local0)
-                Store (^^^GFX0.CBLV, Local1)
+                Store (^^^IGPU.CBLV, Local1)
                 And (Local1, 0xFF, Local1)
                 While (One)
                 {
@@ -9019,7 +9019,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     }
                 }
 
-                Notify (^^^GFX0.DD1F, 0x87)
+                Notify (^^^IGPU.DD1F, 0x87)
                 Notify (VPC0, 0x80)
             }
 
@@ -9041,7 +9041,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     }
                 }
 
-                Notify (^^^GFX0.DD1F, 0x86)
+                Notify (^^^IGPU.DD1F, 0x86)
                 Notify (VPC0, 0x80)
             }
 
@@ -9050,7 +9050,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 Store (0x15, P80H)
                 Notify (PS2M, 0x0E)
                 Store (One, LIDS)
-                ^^^GFX0.GLID (LIDS)
+                ^^^IGPU.GLID (LIDS)
                 Notify (LID0, 0x80)
             }
 
@@ -9059,7 +9059,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 Store (0x16, P80H)
                 Notify (PS2M, 0x0D)
                 Store (Zero, LIDS)
-                ^^^GFX0.GLID (LIDS)
+                ^^^IGPU.GLID (LIDS)
                 Notify (LID0, 0x80)
             }
 
@@ -11731,19 +11731,19 @@ P8XH (One, 0xAB)
                     {
                         If (LEqual (LIDS, Zero))
                         {
-                            Store (0x80000000, \_SB.PCI0.GFX0.CLID)
+                            Store (0x80000000, \_SB.PCI0.IGPU.CLID)
                         }
 
                         If (LEqual (LIDS, One))
                         {
-                            Store (0x80000003, \_SB.PCI0.GFX0.CLID)
+                            Store (0x80000003, \_SB.PCI0.IGPU.CLID)
                         }
                     }
                 }
 
                 If (LEqual (Arg0, 0x04))
                 {
-                    Store (0x80000003, \_SB.PCI0.GFX0.CLID)
+                    Store (0x80000003, \_SB.PCI0.IGPU.CLID)
                 }
             }
 
@@ -12362,7 +12362,7 @@ P8XH (One, 0xAB)
     {
         If (LEqual (And (DIDX, 0x0F00), 0x0400))
         {
-            Notify (\_SB.PCI0.GFX0.DD1F, Arg0)
+            Notify (\_SB.PCI0.IGPU.DD1F, Arg0)
         }
     }
 
@@ -12565,9 +12565,9 @@ P8XH (One, 0xAB)
 
         Method (_L66, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
         {
-            If (LAnd (\_SB.PCI0.GFX0.GSSE, LNot (GSMI)))
+            If (LAnd (\_SB.PCI0.IGPU.GSSE, LNot (GSMI)))
             {
-                \_SB.PCI0.GFX0.GSCI ()
+                \_SB.PCI0.IGPU.GSCI ()
             }
         }
 
@@ -12582,7 +12582,7 @@ P8XH (One, 0xAB)
             {
                 ADBG ("Rotation Lock")
                 Sleep (0x03E8)
-                \_SB.PCI0.GFX0.IUEH (0x04)
+                \_SB.PCI0.IGPU.IUEH (0x04)
             }
         }
     }
@@ -14263,7 +14263,7 @@ P8XH (One, 0xAB)
         }
     }
 
-    Scope (_SB.PCI0.GFX0)
+    Scope (_SB.PCI0.IGPU)
     {
         Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
         {
@@ -14988,7 +14988,7 @@ P8XH (One, 0xAB)
                 0x02, 
                 Package (0x01)
                 {
-                    "\\_SB.PCI0.GFX0"
+                    "\\_SB.PCI0.IGPU"
                 }, 
 
                 Package (0x01)
@@ -15000,7 +15000,7 @@ P8XH (One, 0xAB)
             {
                 Package (0x02)
                 {
-                    "\\_SB.PCI0.GFX0", 
+                    "\\_SB.PCI0.IGPU", 
                     0xFFFFFFFF
                 }, 
 
@@ -15110,7 +15110,7 @@ P8XH (One, 0xAB)
 
                 Package (0x03)
                 {
-                    "\\_SB.PCI0.GFX0", 
+                    "\\_SB.PCI0.IGPU", 
                     One, 
                     Package (0x02)
                     {
@@ -16006,7 +16006,7 @@ P8XH (One, 0xAB)
                                         One, 
                                         Package (0x01)
                                         {
-                                            "\\_SB.PCI0.GFX0"
+                                            "\\_SB.PCI0.IGPU"
                                         }
                                     })
                                 }
