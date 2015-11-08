@@ -96,8 +96,9 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 但是如果在安装阶段就使用这个ID，很可能你是无法正常进入安装程序的。**国外成功用户似乎没提过这个问题，国内用户却又刚好从来没有成功过，我怀疑就是这里的问题阻止了他们**。
 
 
-时过境迁，也许你可以重新测试，在安装的时候，不要修改苹果对于DVMT大小的限制，而且不要使用ig-platform-id （未测）或使用一个错误的ig-platform-id ，只要能安装好，正确驱动显卡就在眼前。
+在安装的时候，不要修改苹果对于DVMT大小的限制，而且不要使用ig-platform-id （未测）或使用一个错误的ig-platform-id （已测成功），只要能安装好，正确驱动显卡就在眼前。
 
+时过境迁，也许你可以重新测试。
 
 
 
@@ -122,7 +123,7 @@ USB应该设置到SmartAuto（如果有的话）
 
 显卡应该设置到独立显卡**Discrete graphics**
 
-这之后再用UBuntu提取，不要使用Clover，也不要使用Windows。
+这之后再用**UBuntu提取**，不要使用Clover，也不要使用Windows。
 
 
 
