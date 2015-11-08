@@ -74,7 +74,9 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 ##USB  0X6D 
 
-究竟是6D还是0D，你自己看看就知道。搜索 **_PRW ** 。
+究竟是6D还是0D，你自己看看就知道。搜索 **_PRW** 。
+
+
 ##显卡相关的安装引导问题
 
 这个机器比较诡异：
