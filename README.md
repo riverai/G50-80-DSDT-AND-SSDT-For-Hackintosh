@@ -82,8 +82,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 这个机器比较诡异：
 
-**第一 虽然内置DVMT是128M，但是你依然需要去掉苹果对这大小的检测。
-**
+**第一 虽然内置DVMT是128M，但是你依然需要去掉苹果对这大小的检测**
 
 
 因此这就导致你在正确驱动显卡之前需要用clover 修改kext的 on the fly功能，也就是说，第一次尝试正确驱动显卡时应该without cache 启动，正确驱动后再重建缓存。
