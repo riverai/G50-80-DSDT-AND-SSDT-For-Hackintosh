@@ -18450,5 +18450,16 @@ P8XH (One, 0xAB)
     {
     }
     Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }
+    Scope (_SB)
+    {
+        Device (PNLF)
+        {
+            Name (_ADR, Zero)
+            Name (_HID, EisaId ("APP0002"))
+            Name (_CID, "backlight")
+            Name (_UID, 10)
+            Name (_STA, 0x0B)
+        }
+    }
 }
 
