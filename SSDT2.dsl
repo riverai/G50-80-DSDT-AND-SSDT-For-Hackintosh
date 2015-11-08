@@ -25,7 +25,6 @@ DefinitionBlock ("SSDT2.aml", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
      * External declarations that were imported from
      * the reference file [refs.txt]
      */
-    External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj)    // 2 Arguments
 
     External (_PR_.CFGD, FieldUnitObj)
     External (_PR_.CPPC, FieldUnitObj)
