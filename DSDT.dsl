@@ -2896,6 +2896,14 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     ,   13, 
                 RCBA,   18
             }
+            Method (_DSM, 4, NotSerialized)
+            {
+                If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
+                Return (Package()
+                {
+                    "compatible", "pci8086,9c43",
+                })
+            }
         }
     }
 
