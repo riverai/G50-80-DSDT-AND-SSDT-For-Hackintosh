@@ -3,7 +3,7 @@
 
 这并不是我正在使用的的笔记本，这是一次友情帮助。
 
-##GPPR方法报错问题
+##GPPR方法报错
 
 
 GPPR方法引用了SGOP，编译器错误的猜了一个参数。
@@ -27,8 +27,12 @@ iasl -da -dl -fe refs.txt
 
 
 into method label GPPR replace_content begin //nothing end;
+
 into definitionblock code_regex
-External.*_SB_\.PCI0\.PEG0\.PEGP\.SGPO,.*MethodObj.* remove_matched;
+
+External.\*\_SB_\.PCI0\.PEG0\.PEGP\.SGPO,.\*MethodObj.* 
+
+remove_matched;
 
 两种方法都由Rehabman提出和提供。
 
@@ -108,7 +112,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 可能你需要启动参数dart = 0，加上不会有什么坏处，我在测试时候发现几个问题，也许与此参数有关，没有进一步排除，有待测试。
 
 
-##提取DSDT的时机问题
+##提取DSDT的时机
 
 
 
@@ -134,7 +138,7 @@ SMBIOS请去网上搜索Broadwell可用的SMBIOS参数，也可以用MBA6.2.
 
 联想美国官网可以下载到BIOS刷新程序，BIOS设置中可以设置是否允许降级，剩下的，需要你自己选择。
 
-## CPU 微码升级问题
+## CPU 微码升级
 
 Broadwell CPU存在内部错误，升级微码是一个可选的操作。
 
