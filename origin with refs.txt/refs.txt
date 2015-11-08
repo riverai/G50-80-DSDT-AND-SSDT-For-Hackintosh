@@ -1,0 +1,1 @@
+External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj, 2)
