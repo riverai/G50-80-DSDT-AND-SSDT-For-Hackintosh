@@ -123,8 +123,8 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 先进Windows再重启进入Mac，在关机以前都不要求先进Windows再进Mac。
 这是为防止冻屏（屏幕画面卡住）。
 
-**对于10.11，应当不存在这个问题，推荐升级。
-**
+**对于10.11，应当不存在这个问题，推荐升级**。
+
 
 
 ##提取DSDT的时机
@@ -150,11 +150,11 @@ USB应该设置到SmartAuto（如果有的话）
 ##SMBIOS
  
 
-SMBIOS请去网上搜索Broadwell可用的SMBIOS参数，也可以用MBA6.2.
+SMBIOS请去网上搜索Broadwell可用的SMBIOS参数，也可以用MBA6.2。
 
 ##BIOS版本
 
-我使用的是r69版本，自带DVMT 128M，地球上大概是找不到最自由的r40版本的。
+我使用的是r69版本，地球上大概是找不到最自由的r40版本的。
 
 联想美国官网可以下载到BIOS刷新程序(包括r69 修改网址然后用迅雷)，BIOS设置中可以设置是否允许降级，剩下的，需要你自己选择。
 
