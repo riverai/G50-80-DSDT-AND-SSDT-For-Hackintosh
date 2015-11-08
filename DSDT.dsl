@@ -9042,47 +9042,18 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             Method (_Q11, 0, NotSerialized)  // _Qxx: EC Query
             {
-                Store (0x11, P80H)
-                If (LEqual (OSYS, 0x07D9))
-                {
-                    GCBL ()
-                    Store (LCBV, Local0)
-                    If (LGreater (Local0, 0x0A))
-                    {
-                        Store (0x0A, LCBV)
-                    }
+                
+                // Brightness Up
+                Notify (PS2K, 0x10)
 
-                    If (LNotEqual (Local0, Zero))
-                    {
-                        Subtract (Local0, One, Local0)
-                        Store (Local0, LCBV)
-                    }
-                }
-
-                Notify (^^^IGPU.DD1F, 0x87)
-                Notify (VPC0, 0x80)
             }
 
             Method (_Q12, 0, NotSerialized)  // _Qxx: EC Query
             {
-                Store (0x12, P80H)
-                If (LEqual (OSYS, 0x07D9))
-                {
-                    GCBL ()
-                    Store (LCBV, Local0)
-                    If (LLess (Local0, 0x0A))
-                    {
-                        Add (Local0, One, Local0)
-                        Store (Local0, LCBV)
-                    }
-                    Else
-                    {
-                        Store (0x0A, LCBV)
-                    }
-                }
+                
+                // Brightness Down
+                Notify (PS2K, 0x20)
 
-                Notify (^^^IGPU.DD1F, 0x86)
-                Notify (VPC0, 0x80)
             }
 
             Method (_Q15, 0, NotSerialized)  // _Qxx: EC Query
