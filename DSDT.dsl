@@ -11617,7 +11617,8 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
     Method (_WAK, 1, Serialized)  // _WAK: Wake
     {
-        P8XH (One, 0xAB)
+        If (LOr(LLess(Arg0,1),LGreater(Arg0,5))) { Store(3,Arg0) }
+P8XH (One, 0xAB)
         If (LEqual (OSYS, 0x07D6))
         {
             Store (0x02, Local0)
