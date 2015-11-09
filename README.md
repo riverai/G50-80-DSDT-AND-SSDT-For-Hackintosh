@@ -103,9 +103,6 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 时过境迁，也许你可以重新测试，比如加入正确的ig-platform-id同时启用破除DVMT限制的修改。
 
-**第三 r69插着U盘重启会导致你丢失Clover的第一启动顺序而直接进入Windows**
-
-反正很诡异，如果你有这问题，不要那样做。
 
 
 
@@ -125,6 +122,16 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 **对于10.11，应当不存在这个问题，推荐升级**。
 
+
+###r69插着U盘重启会导致你丢失Clover的第一启动顺序而直接进入Windows**
+
+反正很诡异，如果你有这问题，不要那样做。
+
+###内置网卡声卡
+
+内置声卡没听说有人能用APPLEHDA，只能用万能驱动。
+
+内置网卡无解，而且那个蓝牙还会给你添麻烦，可以考虑暂时拔掉网卡，之后再删除蓝牙驱动。
 
 
 ##提取DSDT的时机
