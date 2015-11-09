@@ -84,7 +84,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 **第一 Windows10 DVMT检测是不可靠的，你依然需要去掉苹果对这大小的检测**
 
 
-因此这就导致你在正确驱动显卡，必须用clover 修改kext的 on the fly功能，也就是说，第一次尝试正确驱动显卡时应该without cache 启动，正确驱动后再重建缓存。
+因此这就导致你在正确驱动显卡时，必须用clover 修改kext的 patch on the fly功能。根据经验，第一次尝试正确驱动显卡时应该without cache 启动，正确驱动后再重建缓存。同样，这里你可以重新测试。
 
 
 多数时候，不要指望联想留给你的DVMT是足够的，足够不开kext修改。
@@ -103,7 +103,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 时过境迁，也许你可以重新测试，比如加入正确的ig-platform-id同时启用破除DVMT限制的修改。
 
-**第三 r69插着U盘重启/启动会导致你丢失Clover的第一启动顺序而直接进入Windows**
+**第三 r69插着U盘重启会导致你丢失Clover的第一启动顺序而直接进入Windows**
 
 反正很诡异，如果你有这问题，不要那样做。
 
