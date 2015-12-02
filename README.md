@@ -72,6 +72,8 @@ end;
 
 https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
+电池代码存在部分瑕疵，最好你干脆别去看它，至少别指望我再维护，没空.......
+
 ##USB  0X6D 
 
 究竟是6D还是0D，你自己看看就知道。搜索 **_PRW** 。
@@ -91,18 +93,29 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 
 
-**第二 安装引导  正确又不正确的ig-platform-id 是0x16260006**
-
-
-但是如果在安装阶段就使用这个ID，很可能你无法正常进入安装程序。**国外成功用户似乎没提过这个问题，国内用户却又刚好从来没有成功过，我怀疑就是这里的问题阻止了他们**。
-
-
-在安装的时候，不用破除苹果对于DVMT大小的限制（**实际上到底要不要在安装的修改，我已经忘记了**），而且不要使用ig-platform-id （**未测**）或使用一个错误的ig-platform-id （**已测成功，推荐**），只要能安装好，正确驱动显卡就在眼前。**使用一种没有正确驱动显卡的状态即可完成初步安装。
+**第二 安装引导  
 **
+10.10.5安装方法
+
+不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
+
+这样安装进入桌面以后，使用正确的ID ，然后带上Disable DVMT检测的Patch选择Without Cache进入系统，这选项与clover配置文件设置No cache的效果是相同的。
+
+10.11.X安装方法
 
 
-时过境迁，也许你可以重新测试，比如加入正确的ig-platform-id同时启用破除DVMT限制的修改。
+不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
+之后请参照[这里](http://bbs.pcbeta.com/viewthread-1653407-1-1.html)
+
+“
+4. 这一步比较怪异，虽然第二步开了显卡的KextsToPatch，但是我这是新安装好后没效果。
+解决：1）设fakeid 进系统给 /S/L/E/AppleIntelBDWGraphicsFramebuffer.kext/Contents/MacOS/AppleIntelBDWGraphicsFramebuffer 打补丁，replace 4139c4763e with 4139c4eb3e，修复权限，cache后重启； 
+
+2）此时不用设fakeid，可进系统，替换未打补丁的AppleIntelBDWGraphicsFramebuffer，修复权限，cache后重启；
+3）ok，hd5500正常。
+
+”
 
 
 
@@ -129,7 +142,11 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 ###内置网卡声卡
 
-内置声卡没听说有人能用APPLEHDA，只能用万能驱动。
+~~内置声卡没听说有人能用APPLEHDA，只能用万能驱动。
+~~
+
+现在已经看到AppleHDA的仿冒驱动了，等待更新，现在没空。
+
 
 内置网卡无解，而且那个蓝牙还会给你添麻烦，可以考虑暂时拔掉网卡，之后再删除蓝牙驱动。
 
