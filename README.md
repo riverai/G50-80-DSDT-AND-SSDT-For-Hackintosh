@@ -107,6 +107,9 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
+内置的三星内存条很有可能导致你不断的发生引导时Kernel Panic，即便进入安装也会发生essential.pkg提取错误。
+办法很简单，拔掉它，安装完成之后再放回去。
+
 之后请参照[这里](http://bbs.pcbeta.com/viewthread-1653407-1-1.html)
 
 “
