@@ -93,8 +93,9 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 
 
-**第二 安装引导  
-**
+**第二 安装引导**
+
+
 10.10.5安装方法
 
 不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
