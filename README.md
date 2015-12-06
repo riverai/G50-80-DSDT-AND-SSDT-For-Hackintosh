@@ -124,6 +124,19 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 可能你需要启动参数dart = 0，加上不会有什么坏处。
 
+推荐你的Clover config总是有以下配置，防止出现浮点区域问题。
+
+```
+			<key>Fixes</key>
+			<dict>
+				<key>FixRegions_10000000</key>
+				<true/>
+				<key>NewWay_80000000</key>
+				<true/>
+			</dict>
+```
+
+
 ###如果你在用10.10.5
 
 先进Windows再重启进入Mac，在关机以前都不要求先进Windows再进Mac。
