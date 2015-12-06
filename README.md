@@ -41,26 +41,18 @@ remove_matched;
 如果你认为有必要，可以再打上这个补丁
 
 
-
+```
 into method label _Q12 replace_content
-
 begin
-
 // Brightness Down\n
-
     Notify (PS2K, 0x10)\n
-    
 end;
-
 into method label _Q11 replace_content
-
 begin
-
 // Brightness Up\n
-
     Notify (PS2K, 0x20)\n
-    
 end;
+```
 
 这是从[这里](http://www.tonymacx86.com/el-capitan-laptop-guides/171080-guide-lenovo-g50-80-el-capitan.html)得来的,只不过我在使用后发现他把亮度增加与减小弄反了，于是我再把它交换了一下，希望这次没错。
 
@@ -130,7 +122,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 **务必确保你使用的是最新版的Clover和它的自带驱动。**
 
 
-可能你需要启动参数dart = 0，加上不会有什么坏处，我在测试时候发现几个问题，也许与此参数有关，没有进一步排除，有待测试。
+可能你需要启动参数dart = 0，加上不会有什么坏处。
 
 ###如果你在用10.10.5
 
@@ -146,14 +138,23 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 ###内置网卡声卡
 
-~~内置声卡没听说有人能用APPLEHDA，只能用万能驱动。
-~~
 
-现在已经看到AppleHDA的仿冒驱动了，等待更新，现在没空。
+#### 内置声卡
+
+刚刚提到的那位，已经做出了仿冒版的APPLEHDA驱动，请从他的[网盘](https://drive.google.com/folderview?id=0B6ILTCnRuKXtfktxS0VucXFmT0lLMDVPSXV5Y2hHU01SU244U1VMbUhlRjJfZEF2UEt3cnc&usp=sharing)下载，然后用Clover加入HDEF， ID 为3.
 
 
-内置网卡无解，而且那个蓝牙还会给你添麻烦，可以考虑暂时拔掉网卡，之后再删除蓝牙驱动。
 
+
+#### 网卡解决方案
+
+
+内置网卡无解，而且那个蓝牙可能会给你添麻烦。**在10105这个蓝牙会给你增加麻烦，这个蓝牙会一直闪烁在开启和关闭中，妨碍USB2的使用，删除驱动可行。**
+
+**对于101111系统，没有发现此问题。
+**
+
+如果你想连接无线网络，请使用最廉价，最可靠的方案————无线路由器的Repeater和Client模式。
 
 ##提取DSDT的时机
 
