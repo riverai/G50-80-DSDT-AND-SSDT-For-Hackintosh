@@ -86,6 +86,11 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
  
 - 在10.11.1系统，待续。因为发现内置SSDT对应的是X86pulgin没有加载，同时缺少PowerNap选项。
 
+
+### 用到的其它DSDT Patch
+
+实际上看下我的历史记录就知道了，额外说明只为简化。待续。
+
 ##显卡相关的安装引导问题
 
 这个机器比较诡异：
