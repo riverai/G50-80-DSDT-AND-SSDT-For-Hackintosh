@@ -141,8 +141,8 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 **务必确保你使用的是最新版的Clover和它的自带驱动。**
 
+建议你用终端或者用boot flags禁用自动睡眠转休眠。彻底禁用休眠更好，也不用费心各种启动标志。
 
-可能你需要启动参数dart = 0，防止休眠问题搅局干扰长时间睡眠。
 
 推荐你的Clover config总是有以下配置，防止出现浮点区域问题。
 
