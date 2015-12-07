@@ -69,7 +69,22 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 ##USB  0X6D 
 
 究竟是6D还是0D，你自己看看就知道。搜索 **_PRW** 。
+这条Patch，注释掉改名相关内容，那么，你会得到：
 
+- 在10.10.5完全正常的USB，记住使用MBP12.1
+
+- 在10.10.1 识别所有的USB设备，不存在无法使用问题。
+
+**可以这样说，这里的USB真的是超级好搞定！
+**
+
+所以，这里没有改名的必要，也没有必要用FakeXHCI，也没有太多必要用自定义的USB injector。当然，如果你做出来了，别忘记分享一份:-D。
+
+### 变频问题
+
+- 在10.10.5系统，使用排错之后内置的SSDT即可获得优良的变频。
+ 
+- 在10.11.1系统，待续。因为发现内置SSDT对应的是X86pulgin没有加载，同时缺少PowerNap选项。
 
 ##显卡相关的安装引导问题
 
@@ -88,18 +103,18 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 **第二 安装引导**
 
 
-10.10.5安装方法
-
+**10.10.5安装方法
+**
 不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
 这样安装进入桌面以后，使用正确的ID ，然后带上Disable DVMT检测的Patch选择Without Cache进入系统，这选项与clover配置文件设置No cache的效果是相同的。
 
-10.11.X安装方法
-
+**10.11.X安装方法
+**
 
 不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
-内置的三星内存条很有可能导致你不断的发生引导时Kernel Panic，即便进入安装也会发生essential.pkg提取错误。
+**内置的三星内存条很有可能导致你不断的发生引导时Kernel Panic，即便进入安装也会发生essential.pkg提取错误。**
 办法很简单，拔掉它，安装完成之后再放回去。
 
 之后请参照[这里](http://bbs.pcbeta.com/viewthread-1653407-1-1.html)
@@ -114,7 +129,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 ”
 
 
-
+几乎可以这样说，一切Hackintosh最有难度的就是安装过程，只有能搞定安装，后来的几乎都不在话下。
 
 ##启动与启动参数
 
@@ -122,7 +137,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 **务必确保你使用的是最新版的Clover和它的自带驱动。**
 
 
-可能你需要启动参数dart = 0，加上不会有什么坏处。
+可能你需要启动参数dart = 0，防止休眠问题搅局干扰长时间睡眠。
 
 推荐你的Clover config总是有以下配置，防止出现浮点区域问题。
 
@@ -142,7 +157,6 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 先进Windows再重启进入Mac，在关机以前都不要求先进Windows再进Mac。
 这是为防止冻屏（屏幕画面卡住）。
 
-**对于10.11，应当不存在这个问题，推荐升级**。
 
 
 ###r69插着U盘重启会导致你丢失Clover的第一启动顺序而直接进入Windows**
@@ -164,10 +178,13 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 内置网卡无解，而且那个蓝牙可能会给你添麻烦。**在10105这个蓝牙会给你增加麻烦，这个蓝牙会一直闪烁在开启和关闭中，妨碍USB2的使用，删除驱动可行。**
 
-**对于101111系统，没有发现此问题。
-**
+
 
 如果你想连接无线网络，请使用最廉价，最可靠的方案————无线路由器的Repeater和Client模式。
+
+想要使用蓝牙，随意一个USB蓝牙适配器即可，不用即拔出。
+
+这样，总成本约在70元人民币。
 
 ##提取DSDT的时机
 
