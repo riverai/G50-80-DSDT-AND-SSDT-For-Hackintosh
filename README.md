@@ -75,8 +75,8 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 - 在10.10.1 识别所有的USB设备，不存在无法使用问题。
 
-**可以这样说，这里的USB真的是超级好搞定！
-**
+**可以这样说，这里的USB真的是超级好搞定！**
+
 
 所以，这里没有改名的必要，也没有必要用FakeXHCI，也没有太多必要用自定义的USB injector。当然，如果你做出来了，别忘记分享一份:-D。
 
@@ -103,14 +103,14 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 **第二 安装引导**
 
 
-**10.10.5安装方法
-**
+**10.10.5安装方法**
+
 不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
 这样安装进入桌面以后，使用正确的ID ，然后带上Disable DVMT检测的Patch选择Without Cache进入系统，这选项与clover配置文件设置No cache的效果是相同的。
 
-**10.11.X安装方法
-**
+**10.11.X安装方法**
+
 
 不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
