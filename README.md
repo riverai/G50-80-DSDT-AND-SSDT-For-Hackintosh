@@ -182,7 +182,11 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 先进Windows再重启进入Mac，在关机以前都不要求先进Windows再进Mac。
 这是为防止冻屏（屏幕画面卡住）。
 
+10.11没有这个问题。
 
+### 安装失败总是每次进安装程序都报错
+
+放电，清空NVRAM。
 
 ###r69插着U盘重启会导致你丢失Clover的第一启动顺序而直接进入Windows**
 
