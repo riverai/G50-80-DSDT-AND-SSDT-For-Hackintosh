@@ -24,11 +24,15 @@ GPPR方法引用了SGOP，编译器错误的猜了一个参数。
 用"grep SGOP *.dsl"可以发现它存在于另外一个SSDT表中，而且是两个参数，所以直接指定一个正确配置参数的refs.txt，就可以正确反编译GPPR方法。该文件和使用示例你可以在该项目文件夹中找到。
 
 
-**External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj, 2)**
+```
+External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj, 2)
+```
 
 重新反编译
+```
 iasl -da -dl -fe refs.txt
 
+```
 
 反编译器会把一条新的外部引用移动到所有外部开头，你需要把这条移动到SSDT5所有的其它外部声明的最后。再重新编译就可以发现所有错误已经消除。而除了SSDT5，其他DSDT和SSDT都不需要这条外部声明，移除它...
 
@@ -37,13 +41,16 @@ iasl -da -dl -fe refs.txt
 **另外一种方法是直接删除这个方法**
 
 
+```
 into method label GPPR replace_content begin //nothing end;
 
 into definitionblock code_regex
 
-External.\*\_SB_\.PCI0\.PEG0\.PEGP\.SGPO,.\*MethodObj.* 
+External.*_SB_.PCI0.PEG0.PEGP.SGPO,.*MethodObj.*
 
 remove_matched;
+```
+
 
 两种方法都由Rehabman提出和提供。
 
