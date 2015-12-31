@@ -108,6 +108,8 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 本来想用SSDT生成脚本直接生成一份新的并丢弃内部CPU相关SSDT，不过发现必须是修改版的生成脚本才能适配Broadwell i7-5500U，那么本来也不是十分必要，我就懒得搞了。各位请自便，操作很简单。
 
+**如果你试图加载X86Pulgin，请注意加载自己的CPU相关SSDT文件。
+**
 
 ###用到的其它DSDT Patch
 
