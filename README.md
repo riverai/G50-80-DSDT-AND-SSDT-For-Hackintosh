@@ -97,8 +97,20 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 **可以这样说，这里的USB真的是超级好搞定！**
 
+别忘记，你应当做OSI修正，或者按照古老的方法，在Windows8的定义上加上Darwin。
 
-所以，这里没有改名的必要，也没有必要用FakeXHCI，也没有太多必要用自定义的USB injector。当然，如果你做出来了，别忘记分享一份:-D。
+这里没有应用到改名，也没有用FakeXHCI，也没有用自定义的USB injector。
+
+这USB是属于运气比较好的。上面的方法算是初级方法，不是特别保险，如果你打算给自己用，我推荐你这么做：
+
+1 使用USB 0x6D 补丁，同时将XHCI等改名为ECHX。就是说不要注释掉相关代码。
+2 使用安装FakeXHCI。
+
+这就是中级方法了。
+
+高级方法是自行书写injector，初级，中级，高级一脉相承，就看看你需要用到哪一步。
+
+当然，如果你做出来了，别忘记分享一份:-D。
 
 ### 变频问题
 
@@ -108,7 +120,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 本来想用SSDT生成脚本直接生成一份新的并丢弃内部CPU相关SSDT，不过发现必须是修改版的生成脚本才能适配Broadwell i7-5500U，那么本来也不是十分必要，我就懒得搞了。各位请自便，操作很简单。
 
-**如果你试图加载X86Pulgin，请注意加载自己的CPU相关SSDT文件。
+**如果你试图加载X86Pulgin，请注意加载CPU相关SSDT文件。
 **
 
 ###用到的其它DSDT Patch
@@ -141,7 +153,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 **10.11.X安装方法**
 
 
-不用使用任何IG..ID，Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
+不用使用任何IG..ID，不要尝试在安装阶段驱动显卡，你应该禁止驱动显卡。Less is more.这样做的目的是防止系统加载显卡完整驱动，避开一切可能的问题。而且，去除DVMT检测的Ptach在安装的时候也别指望生效。
 
 **内置的三星内存条很有可能导致你不断的发生引导时Kernel Panic，即便进入安装也会发生essential.pkg提取错误。**
 办法很简单，拔掉它，安装完成之后再放回去。
@@ -184,7 +196,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 ###如果你在用10.10.5
 
 先进Windows再重启进入Mac，在关机以前都不要求先进Windows再进Mac。
-这是为防止冻屏（屏幕画面卡住）。
+这是为防止冻屏（屏幕画面卡住）。BIOS还需要打开legacy support，不是可选，是必须。
 
 10.11没有这个问题。
 
@@ -240,11 +252,15 @@ USB应该设置到SmartAuto（如果有的话）
 
 ##开机阶段花屏与调节分辨率偶发花屏
 
-开机第二阶段花屏，有Clover补丁；调节分辨率花屏（HIDPI >> 1920*1080)原因实际和前者是很有关联的。
+开机第二阶段花屏，有Clover补丁，几乎所有笔记本都需要；
+
+调节分辨率花屏（HIDPI >> 1920*1080)原因实际和前者是很有关联的。
 
 这时候你去BIOS **打开legacy support，也就是启用Dual Boot**。
 
 如此，前者的补丁效果更完美，后者几乎消失。两项问题，都能得到很大改善乃至解决。
+
+Dual Boot下的USB3可能存在睡眠唤醒问题，这是其他机器上我的经验，这句话只是一个线索。
 
 
 ##SMBIOS
@@ -271,7 +287,7 @@ Broadwell CPU存在内部错误，升级微码是一个可选的操作。
 3 无视
 
 
-##The End
+##就这些了
 
 
 
