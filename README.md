@@ -99,9 +99,9 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 别忘记，你应当做OSI修正，或者按照古老的方法，在Windows8的定义上加上Darwin。
 
-这里没有应用到改名，也没有用FakeXHCI，也没有用自定义的USB injector。
+这里没有应用到改名，也没有用FakeXHCI，也没有用自定义的USB injector。上面的算是初级方法，不是特别保险，
 
-这USB是属于运气比较好的。上面的方法算是初级方法，不是特别保险，如果你打算给自己用，我推荐你这么做：
+这USB是属于运气比较好的。如果你打算给自己用，我推荐你这么做：
 
 - 使用USB 0x6D 补丁，同时将XHCI等改名为ECHX。就是说不要注释掉相关代码。
 - 安装FakeXHCI。
