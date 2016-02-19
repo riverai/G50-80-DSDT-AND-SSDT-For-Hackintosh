@@ -110,7 +110,7 @@ https://raw.github.com/Yuki-Judai/dxxs-DSDT-Patch/master
 
 高级方法：
 - 使用USB 0x6D 补丁，同时将XHCI等改名为ECHX。就是说不要注释掉相关代码。
-- 安装FakeXHCI。
+- 安装FakeXHCI（可选）。
 - 自行书写injector。
 
 初级，中级，高级一脉相承，就看看你需要用到哪一步。
